@@ -251,3 +251,51 @@ namespace System.IO.Streams
         }
     }
 }
+
+namespace System.IO.Streams.Generic
+{
+    public static class StreamGenericExt
+    {
+        static Dictionary<Type, Action<Stream, object>> WriteFuncs = new Dictionary<Type, Action<Stream, object>>()
+        {
+            {typeof(bool), (s, o) => s.WriteBoolean((bool)o)},
+            {typeof(byte), (s, o) => s.WriteInt8((byte)o)},
+            {typeof(Int16), (bw, data) => bw.WriteInt16((Int16)data) },
+            {typeof(Int32), (bw, data) => bw.WriteInt32((Int32)data) },
+            {typeof(Int64), (bw, data) => bw.WriteInt64((Int64)data) },
+            {typeof(Single), (bw, data) => bw.WriteSingle((Single)data) },
+            {typeof(Double), (bw, data) => bw.WriteDouble((Double)data) },
+            {typeof(byte[]), (s, o) => s.WriteBytesWithLength((byte[])o)},
+            {typeof(string), (s, o) => s.WriteString((string)o)},
+        };
+        public static void Write<T>(this Stream stream, T obj)
+        {
+            if (WriteFuncs.ContainsKey(typeof(T)))
+            {
+                WriteFuncs[typeof(T)](stream, obj);
+                return;
+            }
+
+            throw new NotImplementedException();
+        }
+        static Dictionary<Type, Func<Stream, object>> ReadFuncs = new Dictionary<Type, Func<Stream, object>>()
+        {
+            {typeof(bool), s => s.ReadBoolean()},
+            {typeof(byte), s => s.ReadInt8()},
+            {typeof(Int16), br => br.ReadInt16() },
+            {typeof(Int32), br => br.ReadInt32() },
+            {typeof(Int64), br => br.ReadInt64() },
+            {typeof(Single), br => br.ReadSingle() },
+            {typeof(Double), br => br.ReadDouble() },
+			{typeof(byte[]), s => s.ReadBytesWithLength()},
+            {typeof(string), s => s.ReadString()},
+        };
+        public static T Read<T>(this Stream stream)
+        {
+            if (ReadFuncs.ContainsKey(typeof(T)))
+                return (T)ReadFuncs[typeof(T)](stream);
+
+            throw new NotImplementedException();
+        }
+    }
+}
