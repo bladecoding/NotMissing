@@ -16,8 +16,9 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-namespace OpenMethods
+namespace System
 {
+    //TODO: document
     public delegate void OpenAction<in TThis>(TThis @this);
     public delegate void OpenAction<in TThis, in T>(TThis @this, T arg);
     public delegate void OpenAction<in TThis, in T, in T2>(TThis @this, T arg, T2 arg2);
