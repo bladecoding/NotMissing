@@ -9,7 +9,7 @@ namespace System.Collections.Generic
         public T Item { get; set; }
     }
 
-    public class ProcessQueue<T> : Queue<T>
+    public class ProcessQueue<T> : Queue<T>, IDisposable
     {
         protected object Sync = new object();
         protected Thread Processor;
@@ -69,6 +69,33 @@ namespace System.Collections.Generic
         {
             if (Process != null)
                 Process(this, new ProcessQueueEventArgs<T> {Item = item, Owner = this});
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        ~ProcessQueue()
+        {
+            Dispose(false);
+        }
+
+        protected void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (Processor != null)
+                {
+                    Processor = null;
+                    //Get the processing thread out of waiting if it is.
+                    lock (Sync)
+                    {
+                        Monitor.PulseAll(Sync);
+                    }
+                }
+            }
         }
     }
 
