@@ -66,6 +66,13 @@
     <Compile Include="fastJSON\JsonSerializer.cs" />
     <Compile Include="fastJSON\SafeDictionary.cs" />
     <Compile Include="HttpUtil.cs" />
+    <Compile Include="MIL\HtmlAttribute.cs" />
+    <Compile Include="MIL\HtmlDocument.cs" />
+    <Compile Include="MIL\HtmlElement.cs" />
+    <Compile Include="MIL\HtmlEncoder.cs" />
+    <Compile Include="MIL\HtmlNode.cs" />
+    <Compile Include="MIL\HtmlParser.cs" />
+    <Compile Include="MIL\HtmlText.cs" />
     <Compile Include="OpenMethods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProcessQueue.cs" />
