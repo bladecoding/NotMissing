@@ -53,18 +53,28 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DB\DbExt.cs" />
+    <Compile Include="DB\IQueryBuilder.cs" />
+    <Compile Include="RandomExt.cs" />
+    <Compile Include="DB\SqlColumn.cs" />
+    <Compile Include="DB\SqliteQueryCreator.cs" />
+    <Compile Include="DB\SqlTable.cs" />
+    <Compile Include="StringExt.cs" />
     <Compile Include="EventArgs.cs" />
     <Compile Include="fastJSON\Getters.cs" />
     <Compile Include="fastJSON\JSON.cs" />
     <Compile Include="fastJSON\JsonParser.cs" />
     <Compile Include="fastJSON\JsonSerializer.cs" />
     <Compile Include="fastJSON\SafeDictionary.cs" />
+    <Compile Include="HttpRequest.cs" />
     <Compile Include="HttpUtil.cs" />
     <Compile Include="MIL\HtmlAttribute.cs" />
     <Compile Include="MIL\HtmlDocument.cs" />
@@ -95,7 +105,6 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="fastJSON\README.txt" />
   </ItemGroup>

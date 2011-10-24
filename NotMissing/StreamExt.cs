@@ -249,6 +249,19 @@ namespace System.IO.Streams
                 return Encoding.UTF8.GetString(s.ReadBytes(len));
             return string.Empty;
         }
+
+        public static string ReadLine(this Stream s)
+        {
+            var ret = new StringBuilder();
+            char c;
+            while ((c = (char)s.ReadInt8()) != '\n')
+            {
+                if (c != '\r')
+                    ret.Append(c);
+            }
+            return ret.ToString();
+        }
+
         public static int ReadEncodedInt(this Stream s)
         {
             byte num3;
