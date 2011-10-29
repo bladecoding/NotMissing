@@ -82,7 +82,7 @@ namespace System.Collections.Generic
             Dispose(false);
         }
 
-        protected void Dispose(bool disposing)
+        protected virtual void Dispose(bool disposing)
         {
             if (disposing)
             {

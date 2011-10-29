@@ -61,7 +61,7 @@ namespace NotMissing.Logging
                 {
                     if ((listener.Level & level) != 0 && listener.LogFunc!=null)
                     {
-                        listener.LogFunc(obj);
+                        listener.LogFunc(level, obj);
                     }
                 }
                 InSync = false;

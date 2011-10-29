@@ -266,7 +266,7 @@ namespace System.Web
             if (s != null)
             {
                 int num = IndexOfHtmlEncodingChars(s, 0x0);
-                if (num == 0xffffffff)
+                if (num == -1)
                 {
                     output.Write(s);
                 }
@@ -387,7 +387,7 @@ namespace System.Web
             if (s != null)
             {
                 int num = IndexOfHtmlAttributeEncodingChars(s, 0x0);
-                if (num == 0xffffffff)
+                if (num == -1)
                 {
                     output.Write(s);
                 }

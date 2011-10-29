@@ -20,7 +20,7 @@ namespace NotMissing.Logging
             LogFunc = logfunc;
         }
 
-        protected void Dispose(bool disp)
+        protected virtual void Dispose(bool disp)
         {
             if (disp && Parents != null)
             {
