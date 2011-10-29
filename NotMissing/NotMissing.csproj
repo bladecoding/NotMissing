@@ -63,12 +63,16 @@
   <ItemGroup>
     <Compile Include="DB\DbExt.cs" />
     <Compile Include="DB\IQueryBuilder.cs" />
+    <Compile Include="Logging\DefaultListener.cs" />
+    <Compile Include="Logging\ILogParent.cs" />
+    <Compile Include="Logging\Logger.cs" />
+    <Compile Include="Logging\Levels.cs" />
+    <Compile Include="Logging\ILogListener.cs" />
     <Compile Include="RandomExt.cs" />
     <Compile Include="DB\SqlColumn.cs" />
     <Compile Include="DB\SqliteQueryCreator.cs" />
     <Compile Include="DB\SqlTable.cs" />
     <Compile Include="StringExt.cs" />
-    <Compile Include="EventArgs.cs" />
     <Compile Include="fastJSON\Getters.cs" />
     <Compile Include="fastJSON\JSON.cs" />
     <Compile Include="fastJSON\JsonParser.cs" />
