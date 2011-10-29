@@ -24,9 +24,7 @@ namespace NotMissing.Logging
             if (disp && Parents != null)
             {
                 foreach (var parent in Parents)
-                {
                     parent.Unregister(this);
-                }
                 Parents = null;
             }
         }

@@ -8,14 +8,14 @@ namespace NotMissing.Logging
 {
     public class Logger : ILogParent
     {
-        readonly Logger instance = new Logger();
-        public Logger Instance
+        static readonly Logger instance = new Logger();
+        static public Logger Instance
         {
             get { return instance; }
         }
 
-        bool InSync = false;
-        readonly object SyncRoot = new object();
+        protected bool InSync = false;
+        protected readonly object SyncRoot = new object();
         public List<ILogListener> Listeners = new List<ILogListener>();
 
         void InSyncCheck()
@@ -24,29 +24,33 @@ namespace NotMissing.Logging
                 throw new NotSupportedException("Calling Register/Log inside a Log call is not allowed");
         }
 
-        public void Register(ILogListener listener)
+        public virtual void Register(ILogListener listener)
         {
             InSyncCheck();
             lock (SyncRoot)
             {
                 InSync = true;
+                if (Listeners.Contains(listener))
+                    return;
                 listener.Parents.Add(this);
                 Listeners.Add(listener);
                 InSync = false;
             }
         }
-        public void Unregister(ILogListener listener)
+        public virtual void Unregister(ILogListener listener)
         {
             InSyncCheck();
             lock (SyncRoot)
             {
                 InSync = true;
+                if (!Listeners.Contains(listener))
+                    return;
                 Listeners.Remove(listener);
                 InSync = false;
             }
         }
 
-        public void Log(Levels level, object obj)
+        public virtual void Log(Levels level, object obj)
         {
             InSyncCheck();
             lock (SyncRoot)
@@ -63,11 +67,11 @@ namespace NotMissing.Logging
             }
         }
 
-        public void Trace(object obj) { Log(Levels.Trace, obj); }
-        public void Debug(object obj) { Log(Levels.Debug, obj); }
-        public void Warning(object obj) { Log(Levels.Warning, obj); }
-        public void Info(object obj) { Log(Levels.Info, obj); }
-        public void Error(object obj) { Log(Levels.Error, obj); }
-        public void Fatal(object obj) { Log(Levels.Fatal, obj); }
+        public virtual void Trace(object obj) { Log(Levels.Trace, obj); }
+        public virtual void Debug(object obj) { Log(Levels.Debug, obj); }
+        public virtual void Warning(object obj) { Log(Levels.Warning, obj); }
+        public virtual void Info(object obj) { Log(Levels.Info, obj); }
+        public virtual void Error(object obj) { Log(Levels.Error, obj); }
+        public virtual void Fatal(object obj) { Log(Levels.Fatal, obj); }
     }
 }
