@@ -68,6 +68,7 @@
     <Compile Include="Logging\Logger.cs" />
     <Compile Include="Logging\Levels.cs" />
     <Compile Include="Logging\ILogListener.cs" />
+    <Compile Include="Logging\LogHandler.cs" />
     <Compile Include="Logging\StaticLogger.cs" />
     <Compile Include="RandomExt.cs" />
     <Compile Include="DB\SqlColumn.cs" />

@@ -5,6 +5,8 @@ namespace NotMissing.Logging
     /// </summary>
     public static class StaticLogger
     {
+        public static void Register(ILogListener listener) { Logger.Instance.Register(listener); }
+        public static void Unregister(ILogListener listener) { Logger.Instance.Unregister(listener); }
         public static void Log(Levels level, object obj) { Logger.Instance.Log(level, obj); }
         public static void Trace(object obj) { Logger.Instance.Log(Levels.Trace, obj); }
         public static void Debug(object obj) { Logger.Instance.Log(Levels.Debug, obj); }

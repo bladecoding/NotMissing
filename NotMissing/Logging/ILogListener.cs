@@ -8,7 +8,7 @@ namespace NotMissing.Logging
     public interface ILogListener
     {
         List<ILogParent> Parents { get; set; }
-        Action<object> LogFunc { get; set; }
+        LogHandler LogFunc { get; set; }
         Levels Level { get; set; }
     }
 }

@@ -7,14 +7,15 @@ namespace NotMissing.Logging
 {
     public class DefaultListener : ILogListener, IDisposable
     {
-        public Action<object> LogFunc { get; set; }
+        public LogHandler LogFunc { get; set; }
 
         public Levels Level { get; set; }
 
         public List<ILogParent> Parents { get; set; }
 
-        public DefaultListener(Levels level, Action<Object> logfunc)
+        public DefaultListener(Levels level, LogHandler logfunc)
         {
+            Parents = new List<ILogParent>();
             Level = level;
             LogFunc = logfunc;
         }

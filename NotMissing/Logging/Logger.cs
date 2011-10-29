@@ -32,7 +32,8 @@ namespace NotMissing.Logging
                 InSync = true;
                 if (Listeners.Contains(listener))
                     return;
-                listener.Parents.Add(this);
+                if (listener.Parents != null)
+                    listener.Parents.Add(this);
                 Listeners.Add(listener);
                 InSync = false;
             }
