@@ -18,45 +18,31 @@ namespace NotMissing.Logging
         protected readonly object SyncRoot = new object();
         public List<ILogListener> Listeners = new List<ILogListener>();
 
-        void InSyncCheck()
-        {
-            if (InSync)
-                throw new NotSupportedException("Calling Register/Log inside a Log call is not allowed");
-        }
-
         public virtual void Register(ILogListener listener)
         {
-            InSyncCheck();
             lock (SyncRoot)
             {
-                InSync = true;
                 if (Listeners.Contains(listener))
                     return;
                 if (listener.Parents != null)
                     listener.Parents.Add(this);
                 Listeners.Add(listener);
-                InSync = false;
             }
         }
         public virtual void Unregister(ILogListener listener)
         {
-            InSyncCheck();
             lock (SyncRoot)
             {
-                InSync = true;
                 if (!Listeners.Contains(listener))
                     return;
                 Listeners.Remove(listener);
-                InSync = false;
             }
         }
 
         public virtual void Log(Levels level, object obj)
         {
-            InSyncCheck();
             lock (SyncRoot)
             {
-                InSync = true;
                 foreach (var listener in Listeners)
                 {
                     if ((listener.Level & level) != 0 && listener.LogFunc!=null)
@@ -64,7 +50,6 @@ namespace NotMissing.Logging
                         listener.LogFunc(level, obj);
                     }
                 }
-                InSync = false;
             }
         }
 
