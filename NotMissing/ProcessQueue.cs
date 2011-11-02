@@ -86,6 +86,7 @@ namespace System.Collections.Generic
         {
             if (disposing)
             {
+                Process = null;
                 if (Processor != null)
                 {
                     Processor = null;
