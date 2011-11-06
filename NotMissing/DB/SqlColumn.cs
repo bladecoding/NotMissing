@@ -1,7 +1,7 @@
 ﻿
 using System.Data;
 
-namespace TShockAPI.DB
+namespace NotMissing.Db
 {
     public class SqlColumn
     {

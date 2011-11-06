@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 
-namespace TShockAPI.DB
+namespace NotMissing.Db
 {
     public static class DbExt
     {

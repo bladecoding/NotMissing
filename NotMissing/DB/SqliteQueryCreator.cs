@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 
-namespace TShockAPI.DB
+namespace NotMissing.Db
 {
     public class SqliteQueryCreator : IQueryBuilder
     {
@@ -64,7 +64,7 @@ namespace TShockAPI.DB
             throw new NotImplementedException(type);
         }
 
-        void IQueryBuilder.CreateTable(SqlTable table)
+        public void CreateTable(SqlTable table)
         {
             var columns = GetColumns(table);
             if (columns.Count > 0)

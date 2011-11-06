@@ -61,8 +61,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DB\DbExt.cs" />
-    <Compile Include="DB\IQueryBuilder.cs" />
+    <Compile Include="CloneExt.cs" />
+    <Compile Include="Db\DbExt.cs" />
+    <Compile Include="Db\IQueryBuilder.cs" />
     <Compile Include="Logging\DefaultListener.cs" />
     <Compile Include="Logging\ILogParent.cs" />
     <Compile Include="Logging\Logger.cs" />
@@ -71,9 +72,9 @@
     <Compile Include="Logging\LogHandler.cs" />
     <Compile Include="Logging\StaticLogger.cs" />
     <Compile Include="RandomExt.cs" />
-    <Compile Include="DB\SqlColumn.cs" />
-    <Compile Include="DB\SqliteQueryCreator.cs" />
-    <Compile Include="DB\SqlTable.cs" />
+    <Compile Include="Db\SqlColumn.cs" />
+    <Compile Include="Db\SqliteQueryCreator.cs" />
+    <Compile Include="Db\SqlTable.cs" />
     <Compile Include="StringExt.cs" />
     <Compile Include="fastJSON\Getters.cs" />
     <Compile Include="fastJSON\JSON.cs" />

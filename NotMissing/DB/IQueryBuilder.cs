@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Data;
-using System.Text;
 
-namespace TShockAPI.DB
+namespace NotMissing.Db
 {
     public interface IQueryBuilder
     {
