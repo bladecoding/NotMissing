@@ -45,7 +45,18 @@ namespace System.Collections.Generic
             }
         }
 
-        protected virtual void ProcessLoop()
+		public virtual new int Count 
+		{
+			get 
+			{
+				lock (Sync)
+				{
+					return base.Count;
+				}
+			}
+		}
+
+    	protected virtual void ProcessLoop()
         {
             while (Processor != null)
             {
