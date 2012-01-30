@@ -280,8 +280,43 @@ namespace System.IO.Streams
             while ((num3 & 0x80) != 0x0);
             return num;
         }
+
+
+		public static void InternalCopyTo(this Stream source, Stream destination, int bufferSize)
+		{
+			int num;
+			var buffer = new byte[bufferSize];
+			while ((num = source.Read(buffer, 0, buffer.Length)) != 0)
+			{
+				destination.Write(buffer, 0, num);
+			}
+		}
+		public static void CopyTo(this Stream source, Stream destination)
+		{
+			source.InternalCopyTo(destination, 0x1000);
+		}
+
+		public static byte[] CopyToArray(this Stream source)
+		{
+			if (source is MemoryStream)
+				return ((MemoryStream)source).ToArray();
+			using (var ms = new MemoryStream())
+			{
+				source.CopyTo(ms);
+				return ms.ToArray();
+			}
+		}
     }
+	public static class MemoryStreamExt
+	{
+		public static void Reset(this MemoryStream ms)
+		{
+			ms.Position = 0;
+		}
+	}
 }
+
+
 
 namespace System.IO.Streams.Generic
 {
