@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CloneExt.cs" />
+    <Compile Include="CConsole.cs" />
     <Compile Include="Db\DbExt.cs" />
     <Compile Include="Db\IQueryBuilder.cs" />
     <Compile Include="DisposeList.cs" />
