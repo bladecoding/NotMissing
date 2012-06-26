@@ -70,6 +70,7 @@
     <Compile Include="Db\IQueryBuilder.cs" />
     <Compile Include="DisposeList.cs" />
     <Compile Include="HandlerList.cs" />
+    <Compile Include="HttpExt.cs" />
     <Compile Include="Json\Bson\BsonBinaryType.cs" />
     <Compile Include="Json\Bson\BsonBinaryWriter.cs" />
     <Compile Include="Json\Bson\BsonObjectId.cs" />
